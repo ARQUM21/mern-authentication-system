@@ -272,4 +272,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ![Visitors](https://api.visitorbadge.io/api/visitors?path=ARQUM21%2Fmern-authentication-system&label=Visitors&countColor=%23263759)
 
 </div>
-```
