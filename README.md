@@ -61,10 +61,8 @@ A modern **full-stack authentication system** built with **React**, **Node.js**,
 ## 📸 Screenshots
 
 ### 🔑 Login & Registration
-![Login Page](./screenshots/login.png)
-
-### ✉️ Email OTP Verification
-![Email Verify](./screenshots/email-verify.png)
+![Register Page](./screenshots/register1.png)
+![Login Page](./screenshots/login1.png)
 
 ### 🔒 Password Reset Flow
 
