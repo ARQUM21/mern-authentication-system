@@ -66,10 +66,18 @@ A modern **full-stack authentication system** built with **React**, **Node.js**,
 ### ✉️ Email OTP Verification
 ![Email Verify](./screenshots/email-verify.png)
 
-### 🔒 Password Reset
-![Password Reset](./screenshots/reset-password.png)
+### 🔒 Password Reset Flow
 
-### 🏠 Home Page (After Login)
+#### Step 1: Enter Email
+![Reset Email](./screenshots/reset-email.png)
+
+#### Step 2: Enter OTP
+![Reset OTP](./screenshots/reset-otp.png)
+
+#### Step 3: Set New Password
+![New Password](./screenshots/new-password.png)
+
+### 🏠 Home Page
 ![Home Page](./screenshots/home.png)
 
 ---
@@ -84,3 +92,239 @@ A modern **full-stack authentication system** built with **React**, **Node.js**,
 
 ### 1. Clone the Repository
 ```bash
+git clone https://github.com/ARQUM21/mern-authentication-system.git
+cd mern-authentication-system
+```
+ 
+### 2. Install Dependencies
+```bash
+# Install Backend Dependencies
+cd server
+npm install
+
+# Install Frontend Dependencies
+cd ../client
+npm install
+```
+
+### 3. Backend Environment Variables
+
+Create `.env` file in **server** folder:
+```env
+PORT=4000
+MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/mern-auth?retryWrites=true&w=majority
+JWT_SECRET=your_super_secret_jwt_key_here
+NODE_ENV=development
+
+# Email Configuration (Gmail)
+SENDER_EMAIL=your-email@gmail.com
+APP_PASSWORD=your_gmail_app_password
+
+# Google OAuth
+GOOGLE_CLIENT_ID=your_google_client_id
+GOOGLE_CLIENT_SECRET=your_google_client_secret
+
+# Frontend URL
+FRONTEND_URL=http://localhost:5173
+```
+
+### 4. Frontend Environment Variables
+
+Create `.env` file in **client** folder:
+```env
+VITE_BACKEND_URL=http://localhost:4000
+```
+
+### 5. Gmail App Password Setup
+
+1. Go to Google Account → Security
+2. Enable 2-Step Verification
+3. Go to App Passwords
+4. Generate password for "Mail"
+5. Copy the 16-character password to `APP_PASSWORD` in `.env`
+
+### 6. Google OAuth Setup
+
+1. Go to [Google Cloud Console](https://console.cloud.google.com)
+2. Create a new project
+3. Enable Google+ API
+4. Create OAuth 2.0 credentials
+5. Add authorized redirect URIs:
+```
+   http://localhost:4000/auth/google/callback
+```
+6. Copy Client ID and Secret to `.env`
+
+### 7. Run the Application
+```bash
+# Run Backend (from server folder)
+cd server
+npm run dev
+
+# Run Frontend (from client folder, new terminal)
+cd client
+npm run dev
+```
+
+### 8. Open in Browser
+```
+Frontend: http://localhost:5173
+Backend:  http://localhost:4000
+```
+
+---
+
+## 📁 Project Structure
+```
+mern-authentication-system/
+│
+├── 📂 server/
+│   ├── 📂 config/
+│   │   ├── mongodb.js
+│   │   ├── nodemailer.js
+│   │   ├── EmailTemplates.js
+│   │   └── strategies/
+│   │       └── google_login.js
+│   ├── 📂 controllers/
+│   │   ├── authController.js
+│   │   └── userController.js
+│   ├── 📂 middleware/
+│   │   └── userAuth.js
+│   ├── 📂 models/
+│   │   └── userModel.js
+│   ├── 📂 routes/
+│   │   ├── authRoutes.js
+│   │   └── userRoutes.js
+│   ├── server.js
+│   ├── .env
+│   ├── .gitignore
+│   ├── vercel.json
+│   └── package.json
+│
+├── 📂 client/
+│   ├── 📂 src/
+│   │   ├── 📂 assets/
+│   │   ├── 📂 components/
+│   │   │   ├── Header.jsx
+│   │   │   └── CountdownOtp.jsx
+│   │   ├── 📂 pages/
+│   │   │   ├── Home.jsx
+│   │   │   ├── Login.jsx
+│   │   │   ├── EmailVerify.jsx
+│   │   │   ├── ResetEmail.jsx
+│   │   │   ├── PasswordOtp.jsx
+│   │   │   └── NewPassword.jsx
+│   │   ├── 📂 context/
+│   │   │   └── AppContext.jsx
+│   │   ├── App.jsx
+│   │   ├── main.jsx
+│   │   └── index.css
+│   ├── .env
+│   ├── .gitignore
+│   ├── vercel.json
+│   └── package.json
+│
+└── README.md
+```
+
+---
+
+## 🔒 Security Features
+
+- ✅ **Password Hashing** - bcrypt with salt rounds
+- ✅ **HTTP-only Cookies** - Prevents XSS attacks
+- ✅ **CORS Protection** - Restricted origins
+- ✅ **JWT Expiration** - 7-day token validity
+- ✅ **OTP Expiration** - 2-minute validity
+- ✅ **Input Validation** - Server-side validation
+- ✅ **Environment Variables** - Sensitive data protection
+- ✅ **Secure Cookie Settings** - Production-ready configuration
+
+---
+
+## 🚀 Deployment (Vercel)
+
+### Backend Deployment
+
+1. Push code to GitHub
+2. Import project to Vercel
+3. Add environment variables in Vercel dashboard
+4. Deploy
+
+### Frontend Deployment
+
+1. Push code to GitHub
+2. Import project to Vercel
+3. Add `VITE_BACKEND_URL` in environment variables
+4. Deploy
+
+### Important: Update URLs
+
+After deployment, update:
+- Backend `FRONTEND_URL` → Your Vercel frontend URL
+- Frontend `VITE_BACKEND_URL` → Your Vercel backend URL
+- Google OAuth redirect URI → Your production backend URL
+
+---
+
+## 🔮 Future Enhancements
+
+- [ ] Two-Factor Authentication (2FA)
+- [ ] Account Deletion
+- [ ] Profile Picture Upload
+- [ ] Email Change with Verification
+- [ ] Session Management Dashboard
+- [ ] Login History & Activity Log
+- [ ] Rate Limiting for API Endpoints
+- [ ] Account Lockout after Failed Attempts
+
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Feel free to open issues and pull requests.
+```bash
+1. Fork the repository
+2. Create your feature branch (git checkout -b feature/AmazingFeature)
+3. Commit your changes (git commit -m 'Add some AmazingFeature')
+4. Push to the branch (git push origin feature/AmazingFeature)
+5. Open a Pull Request
+```
+
+---
+
+## 📧 Contact
+
+<div align="center">
+
+**Muhammad Arqum Tariq**
+
+[![GitHub](https://img.shields.io/badge/GitHub-ARQUM21-181717?style=for-the-badge&logo=github)](https://github.com/ARQUM21)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Muhammad_Arqum_Tariq-0A66C2?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/muhammadarqumtariq/)
+[![Email](https://img.shields.io/badge/Email-marqum987@gmail.com-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:marqum987@gmail.com)
+
+</div>
+
+---
+
+## ⭐ Show Your Support
+
+Give a ⭐ if you like this project!
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+<div align="center">
+
+### Made with ❤️ by Muhammad Arqum Tariq
+
+![Visitors](https://api.visitorbadge.io/api/visitors?path=ARQUM21%2Fmern-authentication-system&label=Visitors&countColor=%23263759)
+
+</div>
+```
