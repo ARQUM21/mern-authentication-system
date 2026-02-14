@@ -61,22 +61,22 @@ A modern **full-stack authentication system** built with **React**, **Node.js**,
 ## 📸 Screenshots
 
 ### 🔑 Login & Registration
-![Register Page](./screenshots/register1.png)
-![Login Page](./screenshots/login1.png)
+![Register Page](./screenshots/register1.PNG)
+![Login Page](./screenshots/login1.PNG)
 
 ### 🔒 Password Reset Flow
 
 #### Step 1: Enter Email
-![Reset Email](./screenshots/reset-email.png)
+![Reset Email](./screenshots/enteremail.PNG)
 
 #### Step 2: Enter OTP
-![Reset OTP](./screenshots/reset-otp.png)
+![Reset OTP](./screenshots/enterotp.PNG)
 
 #### Step 3: Set New Password
-![New Password](./screenshots/new-password.png)
+![New Password](./screenshots/setnewpassword.PNG)
 
 ### 🏠 Home Page
-![Home Page](./screenshots/home.png)
+![Home Page](./screenshots/homepage1.PNG)
 
 ---
 
